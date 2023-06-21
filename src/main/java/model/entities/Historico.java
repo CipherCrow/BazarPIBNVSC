@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,11 +20,13 @@ public class Historico {
 	@Column(name = "cod_historico")
 	private Long codHistorico;
 	
-	@Column(name = "cod_pessoa")
-	private int codPessoa;
+	@OneToOne
+	//@Column(name = "cod_pessoa")
+	private Pessoa codPessoa;
 	
-	@Column(name = "cod_item")
-	private int codItem;
+	@ManyToOne
+	//@Column(name = "cod_item")
+	private Item codItem;
 	
 	@Column(name = "dta_ocorrencia")
 	private LocalDate dataOcorrencia;
@@ -30,44 +34,5 @@ public class Historico {
 	@Column(name = "ind_venda")
 	private int indVenda;
 
-	public Long getCodHistorico() {
-		return codHistorico;
-	}
-
-	public void setCodHistorico(Long codHistorico) {
-		this.codHistorico = codHistorico;
-	}
-
-	public int getCodPessoa() {
-		return codPessoa;
-	}
-
-	public void setCodPessoa(int codPessoa) {
-		this.codPessoa = codPessoa;
-	}
-
-	public int getCodItem() {
-		return codItem;
-	}
-
-	public void setCodItem(int codItem) {
-		this.codItem = codItem;
-	}
-
-	public LocalDate getDataDada() {
-		return dataOcorrencia;
-	}
-
-	public void setDataDada(LocalDate dataDada) {
-		this.dataOcorrencia = dataDada;
-	}
-
-	public int getIndVenda() {
-		return indVenda;
-	}
-
-	public void setIndVenda(int indVenda) {
-		this.indVenda = indVenda;
-	}
 	
 }

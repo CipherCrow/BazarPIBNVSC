@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +19,9 @@ public class UltimaColeta {
 	@Column(name = "cod_dta_ultima_coleta")
 	private Long cod_coleta;
 	
-//	@Column(name = "cod_pessoa")
-//	private Long codPessoa;
+	@OneToOne
+	//@Column(name = "cod_pessoa")
+	private Pessoa codPessoa;
 	
 	@Column(name = "dta_calca")
 	private LocalDate dtaCalca;
@@ -40,10 +42,6 @@ public class UltimaColeta {
 	@Column(name = "dta_sapato")
 	private LocalDate dtaSapato;
 	
-	public UltimaColeta() {
-		super();
-	}
-
 	
 	
 }

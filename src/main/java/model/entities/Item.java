@@ -29,7 +29,7 @@ public class Item {
 	private Double tipoCor;
 	
 	@ManyToOne
-//	@Column(name = "cod_tipoItem")
+	//@Column(name = "cod_tipoItem")
 	private TipoItem codTipoItem;
 
 	@Column(name = "nro_item")

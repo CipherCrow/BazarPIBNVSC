@@ -1,12 +1,13 @@
 package model.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,21 +19,27 @@ public class Pessoa {
 	@Column(name = "cod_pessoa")
 	private Long codPessoa;
 	@Column(name = "nom_pessoa")
-	private String nome;
+	private String nomePessoa;
 	@Column(name = "apl_pessoa")
 	private String aplPessoa;
 	@Column(name = "dt_nascimento")
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	@Column(name = "dt_acolhimento")
-	private Date dataAcolhimento;
+	private LocalDate dataAcolhimento;
 	
-//	private Medida codmedidas;
+	@OneToOne
+	private Medida codmedidas;
 	
 	@Column(name = "des_observacao")
 	private String observacao;
 	
-	public Pessoa() {
-		super();
+	public Pessoa() {}
+	
+	public Pessoa(String nome, String apelido, LocalDate nascimento, LocalDate acolhimento) {
+		this.nomePessoa = nome;
+		this.aplPessoa = apelido;
+		this.dataNascimento = nascimento;
+		this.dataAcolhimento = acolhimento;
 	}
 	
 	public Long getcodPessoa() {
@@ -42,10 +49,10 @@ public class Pessoa {
 		this.codPessoa = id;
 	}
 	public String getNome() {
-		return nome;
+		return nomePessoa;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nomePessoa = nome;
 	}
 	public String getApelido() {
 		return aplPessoa;

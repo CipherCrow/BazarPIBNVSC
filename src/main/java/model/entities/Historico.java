@@ -1,6 +1,6 @@
 package model.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class Historico {
 	private int codItem;
 	
 	@Column(name = "dta_ocorrencia")
-	private Date dataOcorrencia;
+	private LocalDate dataOcorrencia;
 	
 	@Column(name = "ind_venda")
 	private int indVenda;
@@ -54,11 +54,11 @@ public class Historico {
 		this.codItem = codItem;
 	}
 
-	public Date getDataDada() {
+	public LocalDate getDataDada() {
 		return dataOcorrencia;
 	}
 
-	public void setDataDada(Date dataDada) {
+	public void setDataDada(LocalDate dataDada) {
 		this.dataOcorrencia = dataDada;
 	}
 

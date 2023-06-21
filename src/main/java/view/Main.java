@@ -1,9 +1,11 @@
 package view;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.time.LocalDate;
 
+import javax.persistence.EntityManager;
+
+import controller.EntityManagerUtil;
+import model.dao.PessoaDAO;
 import model.entities.Pessoa;
 
 public class Main {
@@ -11,15 +13,21 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Pessoa pessoa = new Pessoa();
+		
 		pessoa.setNome("pedro");
 		pessoa.setNome("ruan");
 		pessoa.setObservacao("nenhuma");
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("bazar");
+		Pessoa pessoa2 = new Pessoa("Jonas","Tora",LocalDate.now(),LocalDate.now());
 		
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = EntityManagerUtil.getEntityManager();
+		PessoaDAO pessoaDAO = new PessoaDAO(em);
+		
 		em.getTransaction().begin();
-		em.persist(pessoa);
+		
+		pessoaDAO.cadastrar(pessoa);
+		pessoaDAO.cadastrar(pessoa2);
+		
 		em.getTransaction().commit();
 		em.close();
 	}
